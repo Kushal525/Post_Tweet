@@ -10,6 +10,16 @@ function Post() {
     const [myPostList, setMyPostList ] = useState([]);
     const [postComment, setComment ] = useState([]);
     const [newPostComment, setNewPostComment ] = useState('');
+    const [showLikes, setPostLikes ] = useState([]);
+    const [showDisLikes, setPostDisLikes ] = useState([]);
+
+    const onSubmitPostLikes = () => {
+      Axios.post(`http://localhost:3001/likes/${post_id}`)
+      };
+
+    const onSubmitPostDisLikes = () => {
+      Axios.post(`http://localhost:3001/dislikes/${post_id}`)
+      };
 
     useEffect(() => {
         Axios.get(`http://localhost:3001/post/${post_id}`).then((response) => {
@@ -23,6 +33,17 @@ function Post() {
         })
       });
 
+      useEffect(() => {
+        Axios.get(`http://localhost:3001/likes/${post_id}`).then((response) => {
+          setPostLikes(response.data)
+        })
+      });
+
+      useEffect(() => {
+        Axios.get(`http://localhost:3001/dislikes/${post_id}`).then((response) => {
+          setPostDisLikes(response.data)
+        })
+      });
       const onSubmitPostComment = () => {
         if(!newPostComment){
           return alert("Can't Post Empty Comment");
@@ -51,9 +72,28 @@ function Post() {
                       </div>
                   </div>
                 </div>
-                <div>
-                    <button className="seosaph_post_like"><AiFillLike size="3em" /></button>
-                    <button className="seosaph_post_like" ><AiFillDislike size="3em" /></button>
+                
+                <div className="d-flex flex-row seosaph_post_likes_dislikes">
+                  <div className="p-2">
+                      <button className="seosaph_post_like" onClick={onSubmitPostLikes} ><AiFillLike size="3em" /></button>                      
+                      {showLikes.map((val) =>{
+                      return(
+                        <div>
+                        <h1>{val.likes}</h1>
+                        </div>
+                      )
+                      } )}
+                  </div>
+                  <div className="p-2">
+                    <button className="seosaph_post_like" onClick={onSubmitPostDisLikes} ><AiFillDislike size="3em" /></button>          
+                    {showDisLikes.map((val) =>{
+                    return(
+                      <div>
+                      <h1>{val.dislikes}</h1>
+                      </div>
+                    )
+                    } )}
+                  </div>
                 </div>
               </div>
             </center>

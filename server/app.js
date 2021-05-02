@@ -117,12 +117,82 @@ app.post('/insertcomment/:post_id', async (req, res) => {
         if (error) {
             res.json(error);
         }else{
+            res.json(result);
         }
-        res.json(result);
     })
 });
 
-app.post('/post/:post_id/')
+app.get('/likes/:post_id/', async (req, res) => {
+    const post_id = req.params.post_id;
+    const sqlLike = await "SELECT COUNT(post_like) as likes FROM user_behaviour_table where post_id=? and post_like=1";
+    connection.query(sqlLike,[post_id], (error, result)=> {
+        if (error) {
+            res.send(error);
+        }else{
+            res.send(result);
+        }
+    })
+})
+
+app.get('/dislikes/:post_id/', async (req, res) => {
+    const post_id = req.params.post_id;
+    const sqlDisLike = await "SELECT user_behaviour_id, COUNT(post_dislike) as dislikes FROM user_behaviour_table where post_id=? and post_dislike=1";
+    connection.query(sqlDisLike,[post_id], (error, result)=> {
+        if (error) {
+            res.json(error);
+        }else{
+            res.json(result);
+        }
+    })
+})
+
+app.post('/likes/:post_id/', async (req, res) => {
+    const post_id = req.params.post_id;
+    const user_id = 4;
+    const post_dislike = 0;
+    const post_like = 1;
+    const sqlLikeDelete = await "delete from user_behaviour_table where post_id=? and user_id=?;"
+    connection.query(sqlLikeDelete,[post_id, user_id], (error, result)=> {
+        if (error) {
+            console.log("error")
+        }else{
+            console.log("success")
+        }
+    })
+    const sqlDisLike = await "INSERT INTO user_behaviour_table(post_id,user_id,post_like,post_dislike) values(?,?,?,?)";
+    
+    connection.query(sqlDisLike,[post_id,user_id,post_like,post_dislike], (error, result)=> {
+        if (error) {
+            res.json(error);
+        }else{
+            res.json(result);
+        }
+    })
+})
+
+app.post('/dislikes/:post_id/', async (req, res) => {
+    const post_id = req.params.post_id;
+    const user_id = 4;
+    const post_dislike = 1;
+    const post_like = 0;
+    const sqlDisLikeDelete = await "delete from user_behaviour_table where post_id=? and user_id=?;"
+    connection.query(sqlDisLikeDelete,[post_id, user_id], (error, result)=> {
+        if (error) {
+            console.log("error");
+        }else{
+            console.log("success");
+        }
+    })
+    const sqlDisLike = await "INSERT INTO user_behaviour_table(post_id,user_id,post_like,post_dislike) values(?,?,?,?)";
+    
+    connection.query(sqlDisLike,[post_id,user_id,post_like,post_dislike], (error, result)=> {
+        if (error) {
+            res.json(error);
+        }else{
+            res.json(result);
+        }
+    })
+})
 
 app.listen(3001, () => {
     console.log("Server running on port 3001")
