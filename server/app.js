@@ -20,7 +20,7 @@ app.post('/login', async (req, res) => {
         if(result.length>0){
             res.json(token);
         }else{
-            console.log("error")
+            res.json("error")
         }
     });
     
