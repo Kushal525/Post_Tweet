@@ -1,0 +1,72 @@
+.App {
+  text-align: center;
+}
+
+.myPost_Post{
+  width: 500px;
+  height: 200px;
+  margin: 10px;
+}
+
+.myPost_button{
+  width: 200px;
+  height: 50px;
+  border-radius: 25px;
+}
+
+.seosaph_mypost_title, .seosaph_mypost_footer{
+  background-color: dodgerblue;
+  height: 45px;
+}
+
+.seosaph_mypost_post{
+  width: 27rem;
+  margin: 20px;
+  border-radius: 25px;
+  overflow: hidden;
+  
+}
+
+.seosaph_mypost_post:hover{
+  border: 2px solid dodgerblue;
+  box-shadow: 0px 8px 5px #888, 4px -8px 5px #888;
+}
+
+.seosaph_post{
+  display: flex;
+  width: 100%;
+}
+
+.post_column{
+  flex: 50%;
+}
+
+.seosaph_post_post{
+  width: 35rem;
+  height: 20rem;
+  border-radius: 25px;
+  margin: 20px;
+  padding: center;
+  overflow: hidden;
+}
+
+.seosaph_post_title, .seosaph_post_footer{
+  background-color: rgb(70, 70, 70);
+  height: 45px;
+  color: whitesmoke;
+}
+
+.seosaph_comment{
+  border: 1px solid black;
+  width: 80%;
+  margin: 10px;
+}
+
+.seosaph_post_comment{
+  margin-top: 20px;
+}
+
+.seosaph_post_comment_input{
+  width: 300px;
+  height: 80px;
+}
