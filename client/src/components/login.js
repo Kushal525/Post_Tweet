@@ -18,6 +18,7 @@ const Login = () => {
             
     }).then((response) => {
         if(response.data !== 'error'){
+            localStorage.setItem('token',response.data)
             history.push('/mypost')
         }
         else{
