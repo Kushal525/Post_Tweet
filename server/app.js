@@ -3,6 +3,7 @@ const cors = require('cors');
 const { connection } = require('./db/connection')
 const app = express();
 const ts = Date.now();
+const jwt = require('jsonwebtoken');
 
 app.use(express.json());
 app.use(cors());
@@ -11,16 +12,18 @@ app.use(express.urlencoded({
 }));
 
 app.post('/login', async (req, res) => {
-    const sqlogin = await "SELECT * FROM user_table WHERE user_name=? AND password=?";
     const user_name = req.body.username;
     const password = req.body.password;
+    const sqlogin = await "SELECT * FROM user_table WHERE user_name=? AND password=?";
+    const token = jwt.sign({_id: user_name.toString()}, "hello")
     connection.query(sqlogin,[user_name, password], (error, result) => {
-        if(error){
-            res.json(error)
+        if(result.length>0){
+            res.json(token);
         }else{
-            res.json(result);
+            console.log("error")
         }
     });
+    
 })
 
 app.get('/mypost', (req, res) => {
@@ -84,7 +87,7 @@ app.get('/post/:post_id', async (req, res) => {
 
 app.get('/comment/:post_id', (req, res) => {
     const post_id = req.params.post_id;
-    sqlComment ="select c.post_comment, a.user_name,c.comment_time from user_table a, post_table b, comment_table c where c.post_id=b.post_id and b.post_id=? and a.user_id=c.user_id;";
+    sqlComment ="select c.post_comment, a.user_name,c.comment_time from user_table a, post_table b, comment_table c where c.post_id=b.post_id and b.post_id=? and a.user_id=c.user_id order by comment_id desc";
     connection.query(sqlComment,[post_id], (error, result)=> {
         if (error) {
             res.json(error);
@@ -148,7 +151,7 @@ app.get('/dislikes/:post_id/', async (req, res) => {
 
 app.post('/likes/:post_id/', async (req, res) => {
     const post_id = req.params.post_id;
-    const user_id = 4;
+    const user_id = 2;
     const post_dislike = 0;
     const post_like = 1;
     const sqlLikeDelete = await "delete from user_behaviour_table where post_id=? and user_id=?;"
@@ -172,7 +175,7 @@ app.post('/likes/:post_id/', async (req, res) => {
 
 app.post('/dislikes/:post_id/', async (req, res) => {
     const post_id = req.params.post_id;
-    const user_id = 4;
+    const user_id = 2;
     const post_dislike = 1;
     const post_like = 0;
     const sqlDisLikeDelete = await "delete from user_behaviour_table where post_id=? and user_id=?;"
