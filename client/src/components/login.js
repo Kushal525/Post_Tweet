@@ -19,7 +19,7 @@ const Login = () => {
     }).then((response) => {
         if(response.data !== 'error'){
             localStorage.setItem('accessToken',response.data)
-            history.push('/mypost')
+            history.push('/otherpost')
         }
         else{
             setUsernamePassword("Invalid UserName And Password")

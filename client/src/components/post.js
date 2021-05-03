@@ -14,11 +14,15 @@ function Post() {
     const [showDisLikes, setPostDisLikes ] = useState([]);
 
     const onSubmitPostLikes = () => {
-      Axios.post(`http://localhost:3001/likes/${post_id}`)
+      Axios.post(`http://localhost:3001/likes/${post_id}`,{
+        accessToken:localStorage.getItem("accessToken")
+      })
       };
 
     const onSubmitPostDisLikes = () => {
-      Axios.post(`http://localhost:3001/dislikes/${post_id}`)
+      Axios.post(`http://localhost:3001/dislikes/${post_id}`,{
+        accessToken:localStorage.getItem("accessToken")
+      })
       };
 
     useEffect(() => {
@@ -50,7 +54,8 @@ function Post() {
         }
 
         Axios.post(`http://localhost:3001/insertcomment/${post_id}`,{
-          post_comment:newPostComment
+          post_comment:newPostComment,
+          accessToken : localStorage.getItem("accessToken")
         })
         setNewPostComment('');
       };

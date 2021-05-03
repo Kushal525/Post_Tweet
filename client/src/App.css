@@ -14,21 +14,25 @@
   border-radius: 25px;
 }
 
-.seosaph_mypost_title, .seosaph_mypost_footer{
-  background-color: dodgerblue;
+.seosaph_mypost_title{
+  background-color:cyan;
   height: 45px;
 }
 
+.seosaph_mypost_footer{
+  background-color: lightgrey;
+}
+
 .seosaph_mypost_post{
-  width: 27rem;
-  margin: 20px;
+  width: 35rem;
+  margin: 25px;
   border-radius: 25px;
   overflow: hidden;
   
 }
 
 .seosaph_mypost_post:hover{
-  border: 2px solid dodgerblue;
+  border: 1px solid black;
   box-shadow: 0px 8px 5px #888, 4px -8px 5px #888;
 }
 
@@ -79,4 +83,17 @@
 .seosaph_check_login{
   color: red;
   margin: 15px;
+}
+
+.seosaph_home_homepage_navbar{
+  margin-left: 10px;
+}
+
+.seosaph_home_logout_navbar{
+  margin-left: 80px;
+}
+
+.seosaph_home_navbar{
+  margin-left: 50px;
+  border: none;
 }

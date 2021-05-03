@@ -9,7 +9,11 @@ function MyPost() {
     let history = useHistory();
 
     useEffect(() => {
-        Axios.get('http://localhost:3001/mypost').then((response) => {
+        Axios.get('http://localhost:3001/mypost',{
+          headers:{
+            accessToken:localStorage.getItem("accessToken")
+          }
+        }).then((response) => {
           setMyPostList(response.data)
         })
       }, []);
