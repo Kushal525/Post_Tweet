@@ -54,8 +54,11 @@ function Post() {
         }
 
         Axios.post(`http://localhost:3001/insertcomment/${post_id}`,{
-          post_comment:newPostComment,
-          accessToken : localStorage.getItem("accessToken")
+          post_comment:newPostComment
+        },{
+          headers:{
+            accessToken:localStorage.getItem("accessToken")
+          }
         })
         setNewPostComment('');
       };
