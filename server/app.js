@@ -4,6 +4,7 @@ const { connection } = require('./db/connection')
 const app = express();
 const ts = Date.now();
 const jwt = require('jsonwebtoken');
+const {validateToken} = require('./middleware/Auth');
 
 app.use(express.json());
 app.use(cors());
@@ -15,10 +16,10 @@ app.post('/login', async (req, res) => {
     const user_name = req.body.username;
     const password = req.body.password;
     const sqlogin = await "SELECT * FROM user_table WHERE user_name=? AND password=?";
-    const token = jwt.sign({_id: user_name.toString()}, "hello")
+    const accessToken = jwt.sign({_id: user_name.toString()}, "seosaphAssignmentAuthentication")
     connection.query(sqlogin,[user_name, password], (error, result) => {
         if(result.length>0){
-            res.json(token);
+            res.json(accessToken);
         }else{
             res.json("error")
         }
@@ -48,8 +49,10 @@ app.get('/otherpost', (req, res) => {
     })
 });
 
-app.post('/insertpost', async (req, res) => {
+app.post('/insertpost',validateToken, async (req, res) => {
     const sqlInsertPost = await "INSERT INTO post_table(user_id,text_post,post_time) values(?,?,?)";
+    const accessToken = req.body.accessToken;
+    console.log(accessToken);
     let date_ob = new Date(ts);
     let date = date_ob.getDate();
     let month = date_ob.getMonth() + 1;

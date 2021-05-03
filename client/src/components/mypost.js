@@ -20,7 +20,12 @@ function MyPost() {
         }
 
         Axios.post('http://localhost:3001/insertpost',{
-          text_post:newPost
+          text_post:newPost,
+          accessToken:localStorage.getItem("accessToken")
+        },{
+          headers:{
+            accessToken:localStorage.getItem("accessToken")
+          }
         })
       };
     
