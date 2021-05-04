@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import './App.css';
 import mypost from './components/mypost';
@@ -6,19 +6,35 @@ import otherpost from './components/otherpost';
 import Login from './components/login';
 import Post from './components/post';
 import {useHistory} from 'react-router-dom';
+import { AuthContext } from './helpers/Auth';
+import axios from 'axios';
 
 function App() {
+  const [authState, setAuthState]=useState(false);
   let history = useHistory()
+  useEffect(() => {
+    axios.get('http://localhost:3001/auth',{
+      headers:{
+        accessToken:localStorage.getItem("accessToken")
+      }
+    }).then((response) => {
+      console.log(response.data.length>0)
+      if(response.data.length>0){
+        setAuthState(true)
+      }else{
+        setAuthState(false)
+      }
+    })
+  },[])
   const onLogout = () => {
     localStorage.removeItem('accessToken');
-    history.push('/login')
-    
   }
   return (
    <div className="App">
+     <AuthContext.Provider value={{authState, setAuthState}}>
       <Router>
         <div className="navbar navbar-dark bg-dark ">  
-            {localStorage.getItem("accessToken") && (
+            {authState && (
               <>
                 <div>   
                     <Link className="link seosaph_home_homepage_navbar" to="/"> My Timeline</Link>
@@ -30,7 +46,7 @@ function App() {
         </div>
         <Switch>
           <div>
-          {!localStorage.getItem("accessToken") && (
+          {!authState && (
               <>
                 <Route path="/" exact component={ Login } />
               </>
@@ -45,6 +61,7 @@ function App() {
           </div>
         </Switch>
       </Router>
+      </AuthContext.Provider>
     </div>
   );
 }

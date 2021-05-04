@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Axios from 'axios';
 import { useHistory} from 'react-router-dom';
 import '../App.css';
 import { FaUser } from "react-icons/fa";
 import { FaKey } from "react-icons/fa";
+import {AuthContext} from '../helpers/Auth'
 
 const Login = () => {
     const [username, setUserName] = useState('');
     const [password, setPassword] = useState('');
+    const {setAuthState} = useContext(AuthContext);
     let history = useHistory();
     const [ checkusernamePassword, setUsernamePassword] = useState('')
 
@@ -19,7 +21,8 @@ const Login = () => {
     }).then((response) => {
         if(response.data !== 'error'){
             localStorage.setItem('accessToken',response.data)
-            history.push('/otherpost')
+            setAuthState(true);
+            history.push('/');
         }
         else{
             setUsernamePassword("Invalid UserName And Password")

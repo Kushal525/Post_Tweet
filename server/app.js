@@ -216,6 +216,22 @@ app.post('/dislikes/:post_id/', async (req, res) => {
     })
 })
 
+//Authorized User
+app.get('/auth', validateToken, (req, res) => {
+    const user_id = res.user_id;
+    const sqlFindUser = "select * from user_table where user_id=?";
+    connection.query(sqlFindUser,[user_id], (error, result) => {
+        if(result.length>0){
+            const user_id = result[0].user_id;
+            console.log(user_id)
+            res.json(result)
+        }else{
+            res.json("error")
+        }
+    });
+})
+
+
 app.listen(3001, () => {
     console.log("Server running on port 3001")
 })
