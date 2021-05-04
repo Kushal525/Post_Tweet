@@ -57,7 +57,6 @@ app.get('/otherpost',validateToken, (req, res) => {
 //Insert Post 
 app.post('/insertpost',validateToken, async (req, res) => {
     const user_id = res.user_id;
-    console.log(user_id);
     const sqlInsertPost = await "INSERT INTO post_table(user_id,text_post,post_time) values(?,?,?)";
     let date_ob = new Date(ts);
     let date = date_ob.getDate();
@@ -222,8 +221,6 @@ app.get('/auth', validateToken, (req, res) => {
     const sqlFindUser = "select * from user_table where user_id=?";
     connection.query(sqlFindUser,[user_id], (error, result) => {
         if(result.length>0){
-            const user_id = result[0].user_id;
-            console.log(user_id)
             res.json(result)
         }else{
             res.json("error")

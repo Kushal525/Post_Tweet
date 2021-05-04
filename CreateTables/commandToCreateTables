@@ -1,0 +1,51 @@
+create database seosaph;
+
+use seosaph;
+
+
+CREATE TABLE user_table(
+  user_id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  first_name varchar(50) NOT NULL,
+  last_name varchar(50),
+  user_name varchar(50) NOT NULL,
+  email_id varchar(50) NOT NULL,
+  password varchar(50) NOT NULL,
+  phone_number bigint,
+  address varchar(200)
+);
+
+insert into user_table values(1,"Kushal","P M","Kushal","kushal@gmai.com","12345678",897190039,"Bangalore");
+insert into user_table values(2,"Dilip","A","Dilip","dilip@gmai.com","12345678",897190040,"Bangalore");
+insert into user_table values(3,"Raju","H","Raju","raju@gmai.com","12345678",897190042,"Bangalore");
+insert into user_table values(4,"Vignesh","G","Vignesh","vignesh@gmai.com","12345678",897190043,"Bangalore");
+
+select * from user_table;
+
+CREATE TABLE post_table(
+  post_id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  user_id int NOT NULL,
+  text_post longtext NOT NULL,
+  post_time datetime NOT NULL,
+  FOREIGN KEY (user_id) REFERENCES user_table(user_id)
+);
+
+
+CREATE TABLE comment_table(
+  comment_id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  post_id int NOT NULL,
+  user_id int NOT NULL,
+  post_comment varchar(200) NOT NULL,
+  comment_time datetime NOT NULL,
+  FOREIGN KEY (user_id) REFERENCES user_table(user_id),
+  FOREIGN KEY (post_id) REFERENCES post_table(post_id)
+);
+
+CREATE TABLE user_behaviour_table(
+  user_behaviour_id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  post_id int NOT NULL,
+  user_id int NOT NULL,
+  post_like boolean,
+  post_dislike boolean,
+  FOREIGN KEY (user_id) REFERENCES user_table(user_id),
+  FOREIGN KEY (post_id) REFERENCES post_table(post_id)
+);

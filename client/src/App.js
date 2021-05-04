@@ -28,6 +28,7 @@ function App() {
   },[])
   const onLogout = () => {
     localStorage.removeItem('accessToken');
+    history.push('/login')
   }
   return (
    <div className="App">
@@ -43,15 +44,22 @@ function App() {
                   </div>
               </>
             )}
+            {!authState && (
+              <>
+                <div>   
+                    <Link className="link seosaph_home_login_navbar" to="/login"> login</Link>
+                  </div>
+              </>
+            )}
         </div>
         <Switch>
           <div>
           {!authState && (
               <>
-                <Route path="/" exact component={ Login } />
+                <Route path="/login" exact component={ Login } />
               </>
           )}
-          {localStorage.getItem("accessToken") && (
+          {authState && (
             <>
             <Route path="/" exact component={ mypost } />
               <Route path="/otherpost" exact component= { otherpost } />
