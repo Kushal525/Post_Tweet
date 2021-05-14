@@ -12,6 +12,8 @@ app.use(express.urlencoded({
     extended: true
 }));
 
+const port = process.env.PORT || 3001;
+
 //Login
 app.post('/login', async (req, res) => {
     const user_name = req.body.username;
@@ -229,6 +231,6 @@ app.get('/auth', validateToken, (req, res) => {
 })
 
 
-app.listen(3001, () => {
-    console.log("Server running on port 3001")
+app.listen(port, () => {
+    console.log(`Server running on port ${port}`)
 })

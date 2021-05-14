@@ -49,7 +49,7 @@ function MyPost() {
             <div className="card-group seosaph_mypost_post">
             <div className="card" onClick={() => {history.push(`/post/${val.post_id}`)}}>
                     <h4 className="card-title seosaph_mypost_title">{val.user_name}</h4>
-                    <p className="card-body">{val.text_post} </p>
+                    <p className="card-body seosaph_mypost_body">{val.text_post} </p>
                 
                 <div className="seosaph_mypost_footer">
                     <p>{val.post_time}</p>

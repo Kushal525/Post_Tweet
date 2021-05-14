@@ -15,7 +15,7 @@
 }
 
 .seosaph_mypost_title{
-  background-color:cyan;
+  background-color:rgb(84, 120, 196);
   height: 45px;
 }
 
@@ -26,9 +26,8 @@
 .seosaph_mypost_post{
   width: 35rem;
   margin: 25px;
-  border-radius: 25px;
+  border-radius: 10px 100px / 120px;
   overflow: hidden;
-  
 }
 
 .seosaph_mypost_post:hover{
