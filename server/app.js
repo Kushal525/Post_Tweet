@@ -5,6 +5,7 @@ const app = express();
 const ts = Date.now();
 const jwt = require('jsonwebtoken');
 const {validateToken} = require('./middleware/Auth');
+const { response } = require('express');
 
 app.use(express.json());
 app.use(cors());
@@ -230,6 +231,65 @@ app.get('/auth', validateToken, (req, res) => {
     });
 })
 
+//Search user
+app.post('/search/', (req, res)=>{
+    const firstname = req.body.firstname;
+    const sqlFindUser = "select * from user_table where first_name=?";
+    connection.query(sqlFindUser,[firstname], (error, result) => {
+        if(result.length>0){
+            res.json(result)
+        }else{
+            res.json("error")
+        }
+    });
+})
+
+app.get('/myprofile',validateToken, (req, res) => {
+    user_id=res.user_id;
+    connection.query("SELECT * FROM user_table where user_id=?",[user_id], (error, result)=> {
+        if (error) {
+            res.json(error);
+        }else{
+            res.json(result);
+        }        
+    })
+});
+
+//MyProfile TotalPosts
+app.get('/myprofile/posts',validateToken, (req, res) => {
+    user_id=res.user_id;
+    connection.query("SELECT COUNT(user_id) as totalpost FROM post_table WHERE user_id=?",[user_id], (error, result)=> {
+        if (error) {
+            res.json(error);
+        }else{
+            res.json(result);
+        }        
+    })
+});
+
+//MyProfile TotalLikes
+app.get('/myprofile/likes',validateToken, (req, res) => {
+    user_id=res.user_id;
+    connection.query("SELECT COUNT(post_like) as totallikes FROM user_behaviour_table a, post_table b where a.post_id=b.post_id and a.post_like=1 and b.user_id=?",[user_id], (error, result)=> {
+        if (error) {
+            res.json(error);
+        }else{
+            res.json(result);
+        }        
+    })
+});
+
+//MyProfile TotalDisLikes
+app.get('/myprofile/dislikes',validateToken, (req, res) => {
+    user_id=res.user_id;
+    connection.query("SELECT COUNT(post_dislike) as totaldislikes FROM user_behaviour_table a, post_table b where a.post_id=b.post_id and a.post_dislike=1 and b.user_id=?",[user_id], (error, result)=> {
+        if (error) {
+            res.json(error);
+        }else{
+            res.json(result);
+        }        
+    })
+});
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}`)

@@ -2,12 +2,14 @@ import React, {useEffect, useState} from 'react';
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import './App.css';
 import mypost from './components/mypost';
+import MySearch from './components/search';
 import otherpost from './components/otherpost';
 import Login from './components/login';
 import Post from './components/post';
 import {useHistory} from 'react-router-dom';
 import { AuthContext } from './helpers/Auth';
 import axios from 'axios';
+import MyProfile from './components/myProfile';
 
 function App() {
   const [authState, setAuthState]=useState(false);
@@ -40,6 +42,8 @@ function App() {
                 <div>   
                     <Link className="link seosaph_home_homepage_navbar" to="/"> My Timeline</Link>
                     <Link className="link seosaph_home_navbar" to="/OtherPost">Other's TimeLine</Link>
+                    <Link className="link seosaph_home_logout_navbar" to="/search">Search</Link>
+                    <Link className="link seosaph_home_logout_navbar" to='/myprofile'>My Profile</Link>
                     <Link className="link seosaph_home_logout_navbar" onClick={onLogout}>Logout</Link>
                   </div>
               </>
@@ -64,6 +68,8 @@ function App() {
             <Route path="/" exact component={ mypost } />
               <Route path="/otherpost" exact component= { otherpost } />
               <Route path="/post/:post_id" exact component= { Post } />
+              <Route path="/search" exact component= { MySearch } />
+              <Route path="/myprofile" exact component= { MyProfile } />
             </>
           )}
           </div>

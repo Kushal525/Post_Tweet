@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom';
 import Axios from 'axios';
 import { AiFillLike } from "react-icons/ai";
 import { AiFillDislike } from "react-icons/ai";
+import { WhatsappShareButton} from 'react-share';
+import { WhatsappIcon } from 'react-share';
 import '../App.css';  
 
 function Post() {               
@@ -102,6 +104,10 @@ function Post() {
                     )
                     } )}
                   </div>
+                </div>
+                <div className='d-flex flex-row seosaph_post_likes_dislikes'>
+                  <h2>Share on : </h2>
+                  <WhatsappShareButton title={val.text_post}><WhatsappIcon size="3em" round="true"/></WhatsappShareButton>
                 </div>
               </div>
             </center>

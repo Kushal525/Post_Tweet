@@ -100,3 +100,33 @@
 .seosaph_home_login_navbar{
   margin: 30px;
 }
+
+.seasaph_myprofile{
+  border: 10px solid black;
+  margin-top: 70px;
+  margin-right: 500px;
+  margin-left: 500px;
+  padding-top: 50px;
+  padding-bottom: 80px;
+  border-radius: 20px;
+}
+
+hr{
+  margin-top: 50px;
+  border: 6px solid rgb(3, 3, 3);
+}
+
+.seosaph_myprofile_bottom{
+  display: flex;
+}
+
+.seosaph_myprofile_bottom > div{
+  -ms-flex: 1; 
+  flex: 1;
+}
+
+.seosaph_myprofile_pic{
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
