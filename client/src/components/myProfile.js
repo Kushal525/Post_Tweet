@@ -8,7 +8,7 @@ const MyProfile = () => {
     const [myProfile, setMyProfile] = useState([]);
 
     useEffect(()=>{
-        Axios.get('http://localhost:3001/myprofile/posts',{
+        Axios.get('http://posttweetbackend-env.eba-tzpyde4f.ap-south-1.elasticbeanstalk.com/myprofile/posts',{
             headers:{
             accessToken:localStorage.getItem("accessToken")
           }
@@ -18,7 +18,7 @@ const MyProfile = () => {
     })
 
     useEffect(()=>{
-        Axios.get('http://localhost:3001/myprofile/likes',{
+        Axios.get('http://posttweetbackend-env.eba-tzpyde4f.ap-south-1.elasticbeanstalk.com/myprofile/likes',{
             headers:{
             accessToken:localStorage.getItem("accessToken")
           }
@@ -28,7 +28,7 @@ const MyProfile = () => {
     })
 
     useEffect(()=>{
-        Axios.get('http://localhost:3001/myprofile/dislikes',{
+        Axios.get('http://posttweetbackend-env.eba-tzpyde4f.ap-south-1.elasticbeanstalk.com/myprofile/dislikes',{
             headers:{
             accessToken:localStorage.getItem("accessToken")
           }
@@ -38,7 +38,7 @@ const MyProfile = () => {
     })
 
     useEffect(()=>{
-        Axios.get('http://localhost:3001/myprofile',{
+        Axios.get('http://posttweetbackend-env.eba-tzpyde4f.ap-south-1.elasticbeanstalk.com/myprofile',{
             headers:{
             accessToken:localStorage.getItem("accessToken")
           }
@@ -52,7 +52,7 @@ const MyProfile = () => {
                 return(
                     <div className="seasaph_myprofile">
                         <div>
-                            <img className="seosaph_myprofile_pic" src={avatar}  width="250" height="250" alt="Profile"/>
+                            <img className="seosaph_myprofile_pic" src={avatar}  width="40%" height="40%" alt="Profile"/>
                         </div>
                         <h3>{val.user_name}</h3>
                         <h3>First Name : {val.first_name}</h3>

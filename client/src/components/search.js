@@ -7,7 +7,7 @@ function MySearch() {
     const [result, setMyResult] = useState([]);
     
     const onSearch = () => {
-        Axios.post(`http://localhost:3001/search/`,{firstname:search}).then((response) => {
+        Axios.post(`http://posttweetbackend-env.eba-tzpyde4f.ap-south-1.elasticbeanstalk.com/search/`,{firstname:search}).then((response) => {
             setMyResult(response.data)
           })
       };

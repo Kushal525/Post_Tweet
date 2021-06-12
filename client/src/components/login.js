@@ -14,7 +14,7 @@ const Login = () => {
     const [ checkusernamePassword, setUsernamePassword] = useState('')
 
     const submitLogin = () => {
-        Axios.post('http://localhost:3001/login', {
+        Axios.post('http://posttweetbackend-env.eba-tzpyde4f.ap-south-1.elasticbeanstalk.com/login', {
             username: username,
             password:password
             
@@ -34,10 +34,10 @@ const Login = () => {
     
 
     return(
-        <div style={{margin: "120px"}}>
+        <div>
             <h1>Login Page</h1>
                 <center>
-                <div style={{width:"500px"}}>
+                <div className="seosaph_login">
                     <div className="input-group mb-3">
                         <div className="input-group-prepend">
                             <span className="input-group-text"><FaUser size="2em"/></span>

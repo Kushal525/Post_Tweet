@@ -3,9 +3,11 @@
 }
 
 .myPost_Post{
-  width: 500px;
+  width: 80%;
   height: 200px;
-  margin: 10px;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-bottom: 2%;
 }
 
 .myPost_button{
@@ -24,8 +26,8 @@
 }
 
 .seosaph_mypost_post{
-  width: 35rem;
-  margin: 25px;
+  width: 80%;
+  margin: 2%;
   border-radius: 10px 100px / 120px;
   overflow: hidden;
 }
@@ -103,12 +105,12 @@
 
 .seasaph_myprofile{
   border: 10px solid black;
-  margin-top: 70px;
-  margin-right: 500px;
-  margin-left: 500px;
-  padding-top: 50px;
-  padding-bottom: 80px;
-  border-radius: 20px;
+  margin-top: 5%;
+  margin-right: 30%;
+  margin-left: 30%;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  border-radius: 9c%;
 }
 
 hr{
@@ -128,5 +130,9 @@ hr{
 .seosaph_myprofile_pic{
   border-radius: 50%;
   overflow: hidden;
-  margin-bottom: 20px;
+  margin-bottom: 2%;
+}
+
+.seosaph_login{
+  width: 100%;
 }

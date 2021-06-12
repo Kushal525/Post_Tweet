@@ -16,37 +16,37 @@ function Post() {
     const [showDisLikes, setPostDisLikes ] = useState([]);
 
     const onSubmitPostLikes = () => {
-      Axios.post(`http://localhost:3001/likes/${post_id}`,{
+      Axios.post(`http://posttweetbackend-env.eba-tzpyde4f.ap-south-1.elasticbeanstalk.com/likes/${post_id}`,{
         accessToken:localStorage.getItem("accessToken")
       })
       };
 
     const onSubmitPostDisLikes = () => {
-      Axios.post(`http://localhost:3001/dislikes/${post_id}`,{
+      Axios.post(`http://posttweetbackend-env.eba-tzpyde4f.ap-south-1.elasticbeanstalk.com/dislikes/${post_id}`,{
         accessToken:localStorage.getItem("accessToken")
       })
       };
 
     useEffect(() => {
-        Axios.get(`http://localhost:3001/post/${post_id}`).then((response) => {
+        Axios.get(`http://posttweetbackend-env.eba-tzpyde4f.ap-south-1.elasticbeanstalk.com/post/${post_id}`).then((response) => {
           setMyPostList(response.data)
         })
       });
 
       useEffect(() => {
-        Axios.get(`http://localhost:3001/comment/${post_id}`).then((response) => {
+        Axios.get(`http://posttweetbackend-env.eba-tzpyde4f.ap-south-1.elasticbeanstalk.com/comment/${post_id}`).then((response) => {
           setComment(response.data)
         })
       });
 
       useEffect(() => {
-        Axios.get(`http://localhost:3001/likes/${post_id}`).then((response) => {
+        Axios.get(`http://posttweetbackend-env.eba-tzpyde4f.ap-south-1.elasticbeanstalk.com/likes/${post_id}`).then((response) => {
           setPostLikes(response.data)
         })
       });
 
       useEffect(() => {
-        Axios.get(`http://localhost:3001/dislikes/${post_id}`).then((response) => {
+        Axios.get(`http://posttweetbackend-env.eba-tzpyde4f.ap-south-1.elasticbeanstalk.com/dislikes/${post_id}`).then((response) => {
           setPostDisLikes(response.data)
         })
       });
@@ -55,7 +55,7 @@ function Post() {
           return alert("Can't Post Empty Comment");
         }
 
-        Axios.post(`http://localhost:3001/insertcomment/${post_id}`,{
+        Axios.post(`http://posttweetbackend-env.eba-tzpyde4f.ap-south-1.elasticbeanstalk.com/insertcomment/${post_id}`,{
           post_comment:newPostComment
         },{
           headers:{
@@ -107,7 +107,7 @@ function Post() {
                 </div>
                 <div className='d-flex flex-row seosaph_post_likes_dislikes'>
                   <h2>Share on : </h2>
-                  <WhatsappShareButton title={val.text_post}><WhatsappIcon size="3em" round="true"/></WhatsappShareButton>
+                  <WhatsappShareButton url={val.text_post}><WhatsappIcon size="3em" round="true"/></WhatsappShareButton>
                 </div>
               </div>
             </center>
