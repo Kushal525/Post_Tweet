@@ -66,13 +66,14 @@ function Post() {
       };
 
     return (
-      <div className="App seosaph_post">
+      <div className="App">
         <div>
           { myPostList.map((val) => {
           return(
-            <center>
+            
               <div>
-                <div className="card-group seosaph_post_post post_column">
+                <center>
+                <div className="card-group seosaph_post_post">
                   <div className="card">
                           <h4 className="card-title seosaph_post_title">{val.user_name}</h4>
                           <p className="card-body">{val.text_post} </p>
@@ -82,10 +83,12 @@ function Post() {
                       </div>
                   </div>
                 </div>
-                
-                <div className="d-flex flex-row seosaph_post_likes_dislikes">
+                </center>
+
+                <center>
+                <div className="d-flex flex-row">
                   <div className="p-2">
-                      <button className="seosaph_post_like" onClick={onSubmitPostLikes} ><AiFillLike size="3em" /></button>                      
+                      <button onClick={onSubmitPostLikes} ><AiFillLike size="3em" /></button>                      
                       {showLikes.map((val) =>{
                       return(
                         <div>
@@ -95,7 +98,7 @@ function Post() {
                       } )}
                   </div>
                   <div className="p-2">
-                    <button className="seosaph_post_like" onClick={onSubmitPostDisLikes} ><AiFillDislike size="3em" /></button>          
+                    <button onClick={onSubmitPostDisLikes} ><AiFillDislike size="3em" /></button>          
                     {showDisLikes.map((val) =>{
                     return(
                       <div>
@@ -105,16 +108,16 @@ function Post() {
                     } )}
                   </div>
                 </div>
-                <div className='d-flex flex-row seosaph_post_likes_dislikes'>
+                </center>
+                <div className='d-flex flex-row '>
                   <h2>Share on : </h2>
                   <WhatsappShareButton url={val.text_post}><WhatsappIcon size="3em" round="true"/></WhatsappShareButton>
                 </div>
               </div>
-            </center>
           );
         })}
         </div>
-        <div className="post_column right">
+        <div>
           <div className="seosaph_post_comment">
             <form>
               <textarea className="seosaph_post_comment_input" value={newPostComment} type="text" name="comment" onChange={(e) => {setNewPostComment(e.target.value)}} ></textarea><br/>

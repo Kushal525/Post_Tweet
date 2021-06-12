@@ -42,15 +42,11 @@
   width: 100%;
 }
 
-.post_column{
-  flex: 50%;
-}
-
 .seosaph_post_post{
-  width: 35rem;
-  height: 20rem;
-  border-radius: 25px;
-  margin: 20px;
+  width: 80%;
+  height: 100%;
+  border-radius:25%;
+  margin: 3%;
   padding: center;
   overflow: hidden;
 }
@@ -63,22 +59,22 @@
 
 .seosaph_comment{
   border: 1px solid black;
-  width: 80%;
-  margin: 10px;
+  width: 50%;
+  margin: 2%;
 }
 
 .seosaph_post_comment{
-  margin-top: 20px;
+  margin-top: 2%;
 }
 
 .seosaph_post_comment_input{
-  width: 300px;
-  height: 80px;
+  width: 50%;
+  height: 40%;
 }
 
 .seosaph_post_likes_dislikes{
-  margin-left: 20px;
-  padding-left: 150px;
+  margin-left: 5%;
+  padding-left: 15%;
 }
 
 .seosaph_check_login{
@@ -87,15 +83,15 @@
 }
 
 .seosaph_home_homepage_navbar{
-  margin-left: 10px;
+  margin-left: 5px;
 }
 
 .seosaph_home_logout_navbar{
-  margin-left: 80px;
+  margin-left: 20px;
 }
 
 .seosaph_home_navbar{
-  margin-left: 50px;
+  margin-left: 20px;
   border: none;
 }
 
@@ -104,13 +100,11 @@
 }
 
 .seasaph_myprofile{
-  border: 10px solid black;
-  margin-top: 5%;
-  margin-right: 30%;
-  margin-left: 30%;
+  border: 5px solid black;
+  width: 100%;
   padding-top: 5%;
   padding-bottom: 5%;
-  border-radius: 9c%;
+  border-radius: 5%;
 }
 
 hr{
@@ -134,5 +128,6 @@ hr{
 }
 
 .seosaph_login{
-  width: 100%;
+  margin-top: 5%;
+  width: 70%;
 }
