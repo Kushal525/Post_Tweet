@@ -16,37 +16,37 @@ function Post() {
     const [showDisLikes, setPostDisLikes ] = useState([]);
 
     const onSubmitPostLikes = () => {
-      Axios.post(`http://posttweetbackend-env.eba-tzpyde4f.ap-south-1.elasticbeanstalk.com/likes/${post_id}`,{
+      Axios.post(`http://localhost:3001/post/likes/${post_id}`,{
         accessToken:localStorage.getItem("accessToken")
       })
       };
 
     const onSubmitPostDisLikes = () => {
-      Axios.post(`http://posttweetbackend-env.eba-tzpyde4f.ap-south-1.elasticbeanstalk.com/dislikes/${post_id}`,{
+      Axios.post(`http://localhost:3001/post/dislikes/${post_id}`,{
         accessToken:localStorage.getItem("accessToken")
       })
       };
 
     useEffect(() => {
-        Axios.get(`http://posttweetbackend-env.eba-tzpyde4f.ap-south-1.elasticbeanstalk.com/post/${post_id}`).then((response) => {
+        Axios.get(`http://localhost:3001/post/${post_id}`).then((response) => {
           setMyPostList(response.data)
         })
       });
 
       useEffect(() => {
-        Axios.get(`http://posttweetbackend-env.eba-tzpyde4f.ap-south-1.elasticbeanstalk.com/comment/${post_id}`).then((response) => {
+        Axios.get(`http://localhost:3001/comment/${post_id}`).then((response) => {
           setComment(response.data)
         })
       });
 
       useEffect(() => {
-        Axios.get(`http://posttweetbackend-env.eba-tzpyde4f.ap-south-1.elasticbeanstalk.com/likes/${post_id}`).then((response) => {
+        Axios.get(`http://localhost:3001/post/likes/${post_id}`).then((response) => {
           setPostLikes(response.data)
         })
       });
 
       useEffect(() => {
-        Axios.get(`http://posttweetbackend-env.eba-tzpyde4f.ap-south-1.elasticbeanstalk.com/dislikes/${post_id}`).then((response) => {
+        Axios.get(`http://localhost:3001/post/dislikes/${post_id}`).then((response) => {
           setPostDisLikes(response.data)
         })
       });
@@ -55,7 +55,7 @@ function Post() {
           return alert("Can't Post Empty Comment");
         }
 
-        Axios.post(`http://posttweetbackend-env.eba-tzpyde4f.ap-south-1.elasticbeanstalk.com/insertcomment/${post_id}`,{
+        Axios.post(`http://localhost:3001/comment/insertcomment/${post_id}`,{
           post_comment:newPostComment
         },{
           headers:{

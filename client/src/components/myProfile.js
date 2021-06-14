@@ -8,7 +8,7 @@ const MyProfile = () => {
     const [myProfile, setMyProfile] = useState([]);
 
     useEffect(()=>{
-        Axios.get('http://posttweetbackend-env.eba-tzpyde4f.ap-south-1.elasticbeanstalk.com/myprofile/posts',{
+        Axios.get('http://localhost:3001/myprofile/posts',{
             headers:{
             accessToken:localStorage.getItem("accessToken")
           }
@@ -18,7 +18,7 @@ const MyProfile = () => {
     })
 
     useEffect(()=>{
-        Axios.get('http://posttweetbackend-env.eba-tzpyde4f.ap-south-1.elasticbeanstalk.com/myprofile/likes',{
+        Axios.get('http://localhost:3001/myprofile/likes',{
             headers:{
             accessToken:localStorage.getItem("accessToken")
           }
@@ -28,7 +28,7 @@ const MyProfile = () => {
     })
 
     useEffect(()=>{
-        Axios.get('http://posttweetbackend-env.eba-tzpyde4f.ap-south-1.elasticbeanstalk.com/myprofile/dislikes',{
+        Axios.get('http://localhost:3001/myprofile/dislikes',{
             headers:{
             accessToken:localStorage.getItem("accessToken")
           }
@@ -38,7 +38,7 @@ const MyProfile = () => {
     })
 
     useEffect(()=>{
-        Axios.get('http://posttweetbackend-env.eba-tzpyde4f.ap-south-1.elasticbeanstalk.com/myprofile',{
+        Axios.get('http://localhost:3001/myprofile',{
             headers:{
             accessToken:localStorage.getItem("accessToken")
           }

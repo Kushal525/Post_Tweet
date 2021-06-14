@@ -8,7 +8,7 @@ function OtherPost() {
     let history = useHistory();
 
     useEffect(() => {
-        Axios.get('http://posttweetbackend-env.eba-tzpyde4f.ap-south-1.elasticbeanstalk.com/otherpost',{
+        Axios.get('http://localhost:3001/otherpost',{
           headers:{
             accessToken:localStorage.getItem("accessToken")
           }

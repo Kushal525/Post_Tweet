@@ -15,12 +15,11 @@ import MyProfile from './components/myProfile';
 function App() {
   const [authState, setAuthState]=useState(false);
   useEffect(() => {
-    axios.get('http://posttweetbackend-env.eba-tzpyde4f.ap-south-1.elasticbeanstalk.com/auth',{
+    axios.get('http://localhost:3001/auth',{
       headers:{
         accessToken:localStorage.getItem("accessToken")
       }
     }).then((response) => {
-      console.log(response.data.length>0)
       if(response.data.length>0){
         setAuthState(true)
       }else{

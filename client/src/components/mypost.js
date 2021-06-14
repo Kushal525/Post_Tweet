@@ -9,7 +9,7 @@ function MyPost() {
     let history = useHistory();
 
     useEffect(() => {
-        Axios.get('http://posttweetbackend-env.eba-tzpyde4f.ap-south-1.elasticbeanstalk.com/mypost',{
+        Axios.get('http://localhost:3001/mypost',{
           headers:{
             accessToken:localStorage.getItem("accessToken")
           }
@@ -23,7 +23,7 @@ function MyPost() {
           return alert("Can't Post Empty Data");
         }
 
-        Axios.post('http://posttweetbackend-env.eba-tzpyde4f.ap-south-1.elasticbeanstalk.com/insertpost',{
+        Axios.post('http://localhost:3001/mypost/insertpost',{
           text_post:newPost
         },{
           headers:{

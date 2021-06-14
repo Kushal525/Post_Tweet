@@ -14,7 +14,7 @@ const Login = () => {
     const [ checkusernamePassword, setUsernamePassword] = useState('')
 
     const submitLogin = () => {
-        Axios.post('http://posttweetbackend-env.eba-tzpyde4f.ap-south-1.elasticbeanstalk.com/login', {
+        Axios.post('http://localhost:3001/login', {
             username: username,
             password:password
             
