@@ -35,7 +35,7 @@ const Login = () => {
 
     return(
         <div>
-            <h1>Login Page</h1>
+            <h1 className="login_register_heading">Login Page</h1>
                 <center>
                 <div className="seosaph_login">
                     <div className="input-group mb-3">

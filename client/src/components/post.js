@@ -86,7 +86,7 @@ function Post() {
                 </center>
 
                 <center>
-                <div className="d-flex flex-row">
+                <div className="d-flex flex-row likes_dislikes">
                   <div className="p-2">
                       <button onClick={onSubmitPostLikes} ><AiFillLike size="3em" /></button>                      
                       {showLikes.map((val) =>{
@@ -109,7 +109,7 @@ function Post() {
                   </div>
                 </div>
                 </center>
-                <div className='d-flex flex-row '>
+                <div className='d-flex flex-row likes_dislikes'>
                   <h2>Share on : </h2>
                   <WhatsappShareButton url={val.text_post}><WhatsappIcon size="3em" round="true"/></WhatsappShareButton>
                 </div>

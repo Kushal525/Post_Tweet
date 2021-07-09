@@ -3,8 +3,8 @@
 }
 
 .myPost_Post{
-  width: 80%;
-  height: 200px;
+  width: 50%;
+  height: 180px;
   margin-left: 5%;
   margin-right: 5%;
   margin-bottom: 2%;
@@ -26,9 +26,9 @@
 }
 
 .seosaph_mypost_post{
-  width: 80%;
+  width: 50%;
   margin: 2%;
-  border-radius: 10px 100px / 120px;
+  border-radius: 20px 100px / 120px;
   overflow: hidden;
 }
 
@@ -43,7 +43,7 @@
 }
 
 .seosaph_post_post{
-  width: 80%;
+  width: 50%;
   height: 100%;
   border-radius:25%;
   margin: 3%;
@@ -59,7 +59,7 @@
 
 .seosaph_comment{
   border: 1px solid rgb(136, 130, 130);
-  width: 50%;
+  width: 30%;
   margin: 2%;
 }
 
@@ -68,13 +68,18 @@
 }
 
 .seosaph_post_comment_input{
-  width: 50%;
+  width: 30%;
   height: 30%;
 }
 
 .seosaph_post_likes_dislikes{
   margin-left: 5%;
   padding-left: 15%;
+}
+
+.likes_dislikes{
+  margin-left: 43%;
+  padding: auto;
 }
 
 .seosaph_check_login{
@@ -101,7 +106,7 @@
 
 .seasaph_myprofile{
   border: 5px solid black;
-  width: 100%;
+  width: 50%;
   padding-top: 5%;
   padding-bottom: 5%;
   border-radius: 5%;
@@ -128,6 +133,91 @@ hr{
 }
 
 .seosaph_login{
-  margin-top: 5%;
-  width: 70%;
+  margin-top: 2%;
+  width: 40%;
 }
+
+.login_register_heading{
+  margin-top: 5%;
+}
+
+input::placeholder { 
+  text-align: center;
+}
+
+.firstNameMessage{
+ text-align: left;
+}
+
+span{
+  color: red;
+}
+
+@media only screen and (max-width: 700px) {
+  .seasaph_myprofile{
+    border: 5px solid black;
+    width: 100%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    border-radius: 5%;
+  }
+
+  .seosaph_login{
+    margin-top: 5%;
+    width: 70%;
+  }
+  .seosaph_myprofile_pic{
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 2%;
+    width: 40%;
+    height: 40%;
+  }
+
+  .myPost_Post{
+    width: 80%;
+    height: 200px;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 2%;
+  }
+
+  .seosaph_mypost_post{
+    width: 80%;
+    margin: 2%;
+    border-radius: 10px 100px / 120px;
+    overflow: hidden;
+  }
+
+  .seosaph_post_post{
+    width: 80%;
+    height: 100%;
+    border-radius:25%;
+    margin: 3%;
+    padding: center;
+    overflow: hidden;
+  }
+
+  .seosaph_comment{
+  border: 1px solid rgb(136, 130, 130);
+  width: 70%;
+  margin: 2%;
+  }
+
+  .seosaph_post_comment_input{
+    width: 60%;
+    height: 30%;
+  }
+
+  .likes_dislikes{
+    margin-left: 25%;
+    padding: auto;
+  }
+
+  .myPost_button{
+    width: 100px;
+    height: 40px;
+    border-radius: 25px;
+  }
+}
+

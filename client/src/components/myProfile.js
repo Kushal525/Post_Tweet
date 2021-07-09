@@ -1,6 +1,7 @@
 import Axios from 'axios';
 import React, {useEffect, useState} from 'react';
 import avatar from './avatar.jpg';
+
 const MyProfile = () => {
     const [totalNumberOfPost, setTotalNumberOfPost] = useState([]);
     const [totalNumberOfLikes, setTotalNumberOfLikes] = useState([]);
@@ -50,9 +51,10 @@ const MyProfile = () => {
         <div>
             {myProfile.map((val)=>{
                 return(
+                    <center>
                     <div className="seasaph_myprofile">
                         <div>
-                            <img className="seosaph_myprofile_pic" src={avatar}  width="40%" height="40%" alt="Profile"/>
+                            <img className="seosaph_myprofile_pic" src={avatar} alt="Profile"/>
                         </div>
                         <h3>{val.user_name}</h3>
                         <h3>First Name : {val.first_name}</h3>
@@ -94,6 +96,7 @@ const MyProfile = () => {
                             </div>
                         </div>
                     </div>
+                    </center>
                 )
             })}
         </div>
