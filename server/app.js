@@ -45,7 +45,7 @@ app.use('/comment', commentRouter);
 app.use('/auth', authRouter);
 
 //Search user
-app.use('/search', searchRouter);
+app.use('/search/s', searchRouter);
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}`)
